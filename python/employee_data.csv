@@ -407,10 +407,10 @@ unit_id,manager_id,name,phone_number,job_role,work_location,salary
 136,4,"Wrenley English
 ","+1 472-214-0466
 ",Employee,"Manhattan, NY",283143
-137,4,"Eric O’Neal
+137,4,"Eric O'Neal
 ","+1 312-272-9910
 ",Employee,"Austin, TX",312904
-138,4,"Sean O’Connor
+138,4,"Sean O'Connor
 ","+1 505-644-7503
 ",Employee,"Hartford, CT",325877
 139,4,"Salem Macdonald
@@ -991,7 +991,7 @@ unit_id,manager_id,name,phone_number,job_role,work_location,salary
 331,11,"Iris Moon
 ","+1 505-644-2547
 ",Employee,"Newington, CT",308921
-332,11,"Paul O’brien
+332,11,"Paul O'brien
 ","+1 505-646-2460
 ",Employee,"New Haven, CT",319109
 333,11,"Jackson Cortez
@@ -1186,7 +1186,7 @@ unit_id,manager_id,name,phone_number,job_role,work_location,salary
 396,13,"Khalil Sellers
 ","+1 214-220-4291
 ",Employee,"South Windsor, CT",172642
-397,13,"Griffin O’Connell
+397,13,"Griffin O'Connell
 ","+1 307-550-6386
 ",Employee,"Norwalk, CT",273443
 398,13,"Tyler Jimenez
@@ -2395,7 +2395,7 @@ unit_id,manager_id,name,phone_number,job_role,work_location,salary
 799,26,"Solomon Gray
 ","+1 505-644-2454
 ",Employee,"Bronx, NY",207466
-800,26,"Eric O’Neal
+800,26,"Eric O'Neal
 ","+1 505-619-3272
 ",Employee,"Los Angeles, CA",282951
 801,26,"Malayah Cantu
