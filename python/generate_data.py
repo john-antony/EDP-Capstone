@@ -26,19 +26,23 @@ with open("numbers.txt") as numbers_file:
     phone_numbers = numbers_file.readlines()
 
 
-counter = 0
+counter = 1
+manager_id = 1
 for i in range(1, NUM_ROWS + 1):
     # Generate random values for each column
     unit_id = i
     name = random.choice(names)
     phone_number = random.choice(phone_numbers)
 
-    if counter <= 20:
+    if counter <= 27:
          job_role = "HR"
-    elif counter <= 50:
+    elif counter <= 59:
          job_role = "Manager"
+         manager_id = manager_id
+         manager_id += 1
     else:
          job_role = "Employee"
+         manager_id = counter // 30
     
     
     work_location = random.choice(work_locations)
@@ -47,6 +51,7 @@ for i in range(1, NUM_ROWS + 1):
     # Create the data row
     data_row = [
         unit_id,
+        manager_id,
         name, 
         phone_number,
         job_role,
@@ -62,7 +67,7 @@ for i in range(1, NUM_ROWS + 1):
 with open(OUTPUT_FILE, "w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(
-        ["unit_id", "name", "phone_number", "job_role", "work_location", "salary"]
+        ["unit_id", "manager_id", "name", "phone_number", "job_role", "work_location", "salary"]
     )
     writer.writerows(data_rows)
 
