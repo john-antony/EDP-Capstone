@@ -26,7 +26,7 @@ const Home = () => {
   return (
     <div>
       <h1>JJ SOLUTIONS EMPLOYEE DIRECTORY</h1>
-      <Search />
+      <Search setData={setData} />
 
       {data.map((employee) => (
         <Employee key={employee._id} data={employee} />

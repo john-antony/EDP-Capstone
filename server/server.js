@@ -31,6 +31,37 @@ app.get("/employees", async (req, res) => {
   }
 });
 
+app.post("/search", async (req, res) => {
+  try {
+    // TODO: Add code that can search MongoDB based on a color value
+    // from the Search text box.
+    const { searchTerm } = req.body;
+
+    if (!searchTerm) {
+      return res.status(404).send({ error: "No search term given!" });
+    }
+
+    const searchedEmployees = await employees
+      .find({
+        name: searchTerm,
+      })
+      .toArray();
+    console.log("Searched Employees ", searchedEmployees);
+
+    res.json(searchedEmployees);
+    console.log(
+      `here are the employees named: ${searchTerm} you are looking for!`
+    );
+  } catch (err) {
+    console.error("Error:", err);
+    res
+      .status(500)
+      .send(
+        "Hmm, something doesn't smell right... Error searching for employees"
+      );
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
