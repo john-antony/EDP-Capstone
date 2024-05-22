@@ -52,7 +52,7 @@ Pearl Benitez
 Justice Knight
 Gracie McKee
 Bjorn Pollard
-Marisol O’brien
+Marisol O'brien
 Riley Rasmussen
 Esperanza Crawford
 Kevin Blevins
@@ -263,7 +263,7 @@ Caleb Frost
 Paula Hughes
 Everett Atkinson
 Jazmin Burgess
-Kolton O’Neill
+Kolton O'Neill
 Kenna Browning
 Rohan Truong
 Judith Massey
@@ -279,7 +279,7 @@ Forrest Buckley
 Theodora Tanner
 Bruno Crosby
 Keily Knight
-Beckett O’brien
+Beckett O'brien
 Joanna Decker
 Taylor Powers
 Michelle Ahmed
@@ -437,7 +437,7 @@ Elian Duarte
 Kynlee Beck
 Eduardo Morrow
 Reyna Kelley
-Eric O’Neal
+Eric O'Neal
 Treasure Sullivan
 Evan Moody
 Elaine Ramos
@@ -583,7 +583,7 @@ Cairo Campbell
 Addison Gaines
 Talon Rogers
 Madelyn Carlson
-Paul O’brien
+Paul O'brien
 Joanna Gomez
 Isaiah Manning
 Jennifer McLaughlin
@@ -881,7 +881,7 @@ Jordan Roberson
 Sasha Gill
 Matthias Harmon
 Maren Yu
-Bryant O’Neill
+Bryant O'Neill
 Kenna Barron
 Dustin Todd
 Zariah McCall
@@ -911,7 +911,7 @@ Kamryn Harmon
 Maren Arroyo
 Alberto Landry
 Brynleigh Powers
-Sean O’Connor
+Sean O'Connor
 Charli Bowen
 Trevor Gonzalez
 Abigail Ford
@@ -929,7 +929,7 @@ Misael Lucero
 Ila Buchanan
 Enrique Mullen
 Shay Greene
-Griffin O’Connell
+Griffin O'Connell
 Jillian Savage
 Keaton Carpenter
 Lilly Kirk
@@ -948,7 +948,7 @@ Shiloh Snow
 Houston Pena
 Rachel Murillo
 Lance Griffith
-Alicia O’Donnell
+Alicia O'Donnell
 Lian Acevedo
 Ashlynn Bradford
 Ander Bautista

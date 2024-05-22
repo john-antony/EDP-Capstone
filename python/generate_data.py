@@ -24,6 +24,7 @@ with open("names.txt") as names_file:
 
 with open("numbers.txt") as numbers_file:
     phone_numbers = numbers_file.readlines()
+    
 
 
 counter = 1
@@ -32,7 +33,9 @@ for i in range(1, NUM_ROWS + 1):
     # Generate random values for each column
     unit_id = i
     name = random.choice(names)
+    name = name.strip()
     phone_number = random.choice(phone_numbers)
+    phone_number = phone_number.strip()
 
     if counter <= 27:
          job_role = "HR"
