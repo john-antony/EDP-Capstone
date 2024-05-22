@@ -38,12 +38,18 @@ app.post("/search", async (req, res) => {
     const { searchTerm } = req.body;
 
     if (!searchTerm) {
-      return res.status(404).send({ error: "No search term given!" });
+      res.status(404).send({ error: "No search term given!" });
+      res.json([{}]);
+      return;
     }
 
     const searchedEmployees = await employees
       .find({
-        name: searchTerm,
+        $or: [
+          { name: { $regex: searchTerm, $options: "i" } },
+          { job_role: { $regex: searchTerm, $options: "i" } },
+          { work_location: { $regex: searchTerm, $options: "i" } },
+        ],
       })
       .toArray();
     console.log("Searched Employees ", searchedEmployees);
