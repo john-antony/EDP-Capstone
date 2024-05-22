@@ -17,16 +17,30 @@ work_locations = ['Hartford, CT', 'West Hartford, CT','Newington, CT','South Win
                   'St Paul, MN', 'Chicago, IL', 'Atlanta, GA', 'Los Angeles, CA', 'Austin, TX']
 names = []
 phone_numbers = []
-job_roles = []
+job_roles = ['Employee', 'HR', 'Manager']
 
+with open("names.txt") as names_file:
+    names = names_file.readlines()
+
+with open("numbers.txt") as numbers_file:
+    phone_numbers = numbers_file.readlines()
+
+
+counter = 0
 for i in range(1, NUM_ROWS + 1):
     # Generate random values for each column
     unit_id = i
     name = random.choice(names)
     phone_number = random.choice(phone_numbers)
-    job_role = random.choice(job_roles)
 
-
+    if counter <= 20:
+         job_role = "HR"
+    elif counter <= 50:
+         job_role = "Manager"
+    else:
+         job_role = "Employee"
+    
+    
     work_location = random.choice(work_locations)
     salary = random.randint(40000, 350000)
 
@@ -42,6 +56,7 @@ for i in range(1, NUM_ROWS + 1):
 
     # Add the data row to the list
     data_rows.append(data_row)
+    counter += 1
 
 # Write the data to the CSV file
 with open(OUTPUT_FILE, "w", newline="") as file:
