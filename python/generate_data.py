@@ -39,17 +39,25 @@ for i in range(1, NUM_ROWS + 1):
 
     if counter <= 27:
          job_role = "HR"
+         salary = random.randint(150000, 250000)
     elif counter <= 59:
          job_role = "Manager"
+         salary = random.randint(200000, 350000)
          manager_id = manager_id
          manager_id += 1
     else:
          job_role = "Employee"
+         salary = random.randint(40000, 99999)
          manager_id = counter // 30
     
     
     work_location = random.choice(work_locations)
-    salary = random.randint(40000, 350000)
+
+    if "NY" in work_location:
+        salary = (salary * 1.5)
+
+
+
 
     # Create the data row
     data_row = [

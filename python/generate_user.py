@@ -47,6 +47,7 @@ for i in range(1, NUM_ROWS + 1):
     ]
 
     # Add the data row to the list
+
     data_rows.append(data_row)
 
 
