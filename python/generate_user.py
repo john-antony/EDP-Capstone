@@ -33,7 +33,8 @@ for i in range(1, NUM_ROWS + 1):
     short_name = first_name + last_name[0] + str(random.randint(0, 9))
     name = short_name.lower()
     
-    
+    if name in data_rows:
+        name = name + str(random.randint(0,9))
     # Create the data row
     data_row = [
         fk_id,
@@ -42,6 +43,7 @@ for i in range(1, NUM_ROWS + 1):
     ]
 
     # Add the data row to the list
+
     data_rows.append(data_row)
 
 
