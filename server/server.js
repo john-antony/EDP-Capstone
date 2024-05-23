@@ -8,7 +8,8 @@ import cors from "cors";
 dotenv.config();
 const url = process.env.MONGO_DB_URL;
 const dbName = process.env.MONGO_DB;
-const collectionName = process.env.MONGO_DB_COLLECTION;
+const employeeCollectionName = process.env.MONGO_DB_EMPLOYEES_COLLECTION;
+const userDataCollectionName = process.env.MONGO_DB_USER_DATA_COLLECTION;
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
@@ -19,7 +20,8 @@ app.use(express.json());
 
 const client = await MongoClient.connect(url);
 const db = client.db(dbName);
-const employees = db.collection(collectionName);
+const employees = db.collection(employeeCollectionName);
+const userData = db.collection(userDataCollectionName);
 
 app.get("/employees", async (req, res) => {
   try {
@@ -65,6 +67,24 @@ app.post("/search", async (req, res) => {
       .send(
         "Hmm, something doesn't smell right... Error searching for employees"
       );
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const result = await pool.query(
+      "SELECT uid FROM users WHERE username = $1 AND password = $2",
+      [username, password]
+    );
+    if (result.rows.length > 0) {
+      res.status(200).json({ uid: result.rows[0].uid });
+    } else {
+      res.status(401).json({ message: "Authentication failed" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
