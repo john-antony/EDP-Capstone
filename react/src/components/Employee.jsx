@@ -23,7 +23,7 @@ const Employee = (props) => {
         {user.userobj.job_role == "HR" ||
         (user.userobj.job_role == "Manager" &&
           user.userobj.manager_id == props.data?.manager_id) ? (
-          <div className="card-text">Salary: {props.data?.salary}</div>
+          <div className="card-text">Salary: ${props.data?.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
         ) : (
           <div className="card-text">Salary: UNAUTHORIZED</div>
         )}
