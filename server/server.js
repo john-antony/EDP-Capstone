@@ -51,6 +51,7 @@ app.post("/search", async (req, res) => {
           { name: { $regex: searchTerm, $options: "i" } },
           { job_role: { $regex: searchTerm, $options: "i" } },
           { work_location: { $regex: searchTerm, $options: "i" } },
+          { manager_id: Number(searchTerm) },
         ],
       })
       .toArray();
@@ -71,16 +72,42 @@ app.post("/search", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
   try {
-    const result = await pool.query(
-      "SELECT uid FROM users WHERE username = $1 AND password = $2",
-      [username, password]
-    );
-    if (result.rows.length > 0) {
-      res.status(200).json({ uid: result.rows[0].uid });
+    const { username, password } = req.body;
+
+    const user = await userData
+      .find({
+        name: username,
+        password: Number(password),
+      })
+      .toArray();
+    if (user) {
+      console.log("Grabbing user:", user[0].name);
+      res.status(200).json({ username: user[0].name, fk_id: user[0].fk_id });
     } else {
       res.status(401).json({ message: "Authentication failed" });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.post("/userObj", async (req, res) => {
+  try {
+    const { user } = req.body;
+
+    const userObj = await employees
+      .find({
+        unit_id: user.fk_id,
+      })
+      .toArray();
+
+    if (userObj) {
+      console.log("Grabbing user:", userObj);
+      res.status(200).json(userObj[0]);
+    } else {
+      res.status(401).json({ message: "Could not get user object" });
     }
   } catch (err) {
     console.error(err);

@@ -1,8 +1,10 @@
 import Search from "./Search";
 import Employee from "./Employee";
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../hooks/AuthContext";
 
 const Home = () => {
+  const { user, fetchUser } = useAuth();
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -21,6 +23,10 @@ const Home = () => {
     };
 
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    fetchUser();
   }, []);
 
   return (

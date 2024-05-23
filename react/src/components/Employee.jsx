@@ -1,6 +1,8 @@
 import React from "react";
+import { useAuth } from "../hooks/AuthContext";
 
 const Employee = (props) => {
+  const { user } = useAuth();
   return (
     <div
       className="card"
@@ -17,7 +19,14 @@ const Employee = (props) => {
         <div className="card-text">
           Phone Number: {props.data?.phone_number}
         </div>
-        <div className="card-text">Salary: {props.data?.salary}</div>
+
+        {user.userobj.job_role == "HR" ||
+        (user.userobj.job_role == "Manager" &&
+          user.userobj.manager_id == props.data?.manager_id) ? (
+          <div className="card-text">Salary: {props.data?.salary}</div>
+        ) : (
+          <div className="card-text">Salary: UNAUTHORIZED</div>
+        )}
       </div>
       <div
         className="card-footer"

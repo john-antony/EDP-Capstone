@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +13,7 @@ const Login = () => {
     event.preventDefault();
     await login(username, password);
     console.log(username, password);
-    navigate("/add");
+    navigate("/home");
   };
 
   return (

@@ -20,13 +20,38 @@ export const AuthProvider = ({ children }) => {
         }
       );
       const data = await response.json();
-      if (data.uid) {
+      if (data) {
         setUser({
-          username,
-          uid: data.uid, // Storing the uid returned from the server
+          username: data.username,
+          fk_id: data.fk_id, // Storing the uid returned from the server
         });
       } else {
         throw new Error(data.message || "Login failed");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchUser = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_EMPLOYEES_API_URL}/userObj`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ user }),
+        }
+      );
+      const data = await response.json();
+      if (data) {
+        setUser({
+          userobj: data, // Storing the uid returned from the server
+        });
+      } else {
+        throw new Error(data.message || "User obj failed");
       }
     } catch (error) {
       console.error(error);
@@ -38,7 +63,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, fetchUser }}>
       {children}
     </AuthContext.Provider>
   );
