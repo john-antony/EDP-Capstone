@@ -2,6 +2,7 @@ import { useState } from "react";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Prediction from "./components/Prediction";
+import Profile from "./components/Profile";
 
 import RequireAuth from "./components/RequireAuth";
 import { AuthProvider } from "./hooks/AuthContext";
@@ -24,7 +25,22 @@ function App() {
                 </RequireAuth>
               }
             />
-            <Route path="/predict" element={<Prediction />} />
+            <Route
+              path="/predict"
+              element={
+                <RequireAuth>
+                  <Prediction />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <RequireAuth>
+                  <Profile />
+                </RequireAuth>
+              }
+            />
           </Routes>
         </AuthProvider>
       </Router>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/Search.css";
 
 const Search = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,7 +40,7 @@ const Search = (props) => {
         value={searchTerm}
         onChange={handleChange}
       />
-      <button className="btn btn-outline-success" type="submit">
+      <button className="search-btn" type="submit">
         Search
       </button>
     </form>

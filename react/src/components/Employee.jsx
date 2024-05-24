@@ -1,11 +1,11 @@
 import React from "react";
 import { useAuth } from "../hooks/AuthContext";
-
+import "../styles/Employee.css";
 const Employee = (props) => {
   const { user } = useAuth();
   return (
     <div
-      className="card"
+      className="e-card"
       style={{ flex: "1", minWidth: "300px", maxWidth: "45%" }}
     >
       <div className="card-body">
@@ -23,7 +23,12 @@ const Employee = (props) => {
         {user.userobj.job_role == "HR" ||
         (user.userobj.job_role == "Manager" &&
           user.userobj.manager_id == props.data?.manager_id) ? (
-          <div className="card-text">Salary: ${props.data?.salary.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</div>
+          <div className="card-text">
+            Salary: $
+            {props.data?.salary
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </div>
         ) : (
           <div className="card-text">Salary: UNAUTHORIZED</div>
         )}
@@ -31,14 +36,7 @@ const Employee = (props) => {
       <div
         className="card-footer"
         style={{ display: "flex", justifyContent: "space-between" }}
-      >
-        <button
-          className="btn btn-sm btn-danger"
-          onClick={() => props.handleDelete(props.data._id)}
-        >
-          Delete
-        </button>
-      </div>
+      ></div>
     </div>
   );
 };

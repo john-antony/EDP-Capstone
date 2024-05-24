@@ -1,7 +1,14 @@
 import React, { useState } from "react";
+import { useAuth } from "../hooks/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/Predict.css";
 
 const Prediction = () => {
   // State to manage loading state
+  const { logout } = useAuth();
+
+  const navigate = useNavigate();
+
   const [isLoading, setIsloading] = useState(false);
   const work_locations = [
     "Hartford, CT",
@@ -59,16 +66,42 @@ const Prediction = () => {
     inputData[name] = value;
     setFormData(inputData);
   };
+
+  const handlelogout = async (e) => {
+    e.preventDefault();
+    await logout();
+    console.log("Logged Out!");
+    navigate("/");
+  };
+
   return (
-    <div>
+    <div className="predict">
+      <h1>Salary Predictor</h1>
+      <div className="menu-btns">
+        <Link to="/home">
+          <button className="search-btn" type="submit">
+            Home
+          </button>
+        </Link>
+        <Link to="/profile">
+          <button className="search-btn" type="submit">
+            Profile
+          </button>
+        </Link>
+
+        <button className="search-btn" type="submit" onClick={handlelogout}>
+          Log Out
+        </button>
+      </div>
+
       <form method="post" acceptCharset="utf-8" name="Modelform">
-        <div className="form-group">
+        <div className="predict-form">
           <label>
             <b>Select the Job Role:</b>
           </label>
           <br />
           <select
-            className="selectpicker form-control"
+            className="predict-select"
             id="job_role"
             name="job_role"
             value={formData.job_role}
@@ -83,13 +116,13 @@ const Prediction = () => {
             <option value="job_role_HR">HR</option>
           </select>
         </div>
-        <div className="form-group">
+        <div className="predict-form">
           <label>
             <b>Select the Work Location:</b>
           </label>
           <br />
           <select
-            className="selectpicker form-control"
+            className="predict-select"
             id="work_location"
             name="work_location"
             value={formData.work_location}
@@ -110,18 +143,18 @@ const Prediction = () => {
             disabled={isLoading}
             onClick={!isLoading ? handlePredictClick : null}
           >
-            Predict Selling Price
+            Predict Salary
           </button>
         </div>
       </form>
       <br />
-      <div className="text-center">
+      <div className="results">
         <h4>
           {showSpan && (
             <span id="prediction">
               {result && Object.keys(result).length !== 0 ? (
                 <p>
-                  The Predicted Salary is Salary: $
+                  This is Your Predicted Salary: $
                   {result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </p>
               ) : (
