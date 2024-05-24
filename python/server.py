@@ -57,7 +57,13 @@ def predict():
         model_df[query_df.iloc[0,1]] = 1
         datadf.update(model_df)
         print(datadf)
+
         prediction = model.predict(datadf)
+
+        model_df[query_df.iloc[0,0]] = 0
+        # work location
+        model_df[query_df.iloc[0,1]] = 0
+        datadf.update(model_df)
         return jsonify({'Prediction': list(prediction)})
     except Exception as e:
         return jsonify({'error': str(e)})
